@@ -1,0 +1,41 @@
+--> Node js has event loop which is an infinite loop that will run and  listen
+to the requests and only if you unregister it with "process.exit()", only than
+this event loop would break and stop running.
+--> Node js uses single thread of the OS and its very fast, however on deeper side if the single thread
+is overloaded than it would take multi thread approach by leveraging the OS
+--> Node passes the data of the form in the form of streams which we can get access to through buffers, and we 
+do it by registering an event that listens to 'data', and we can achieve that through "req.on(data)" 
+
+----NodeJS working with Registry----
+--> When we register an event with its listener function, NodeJs would register that event in its internal registery 
+and won't execute it right away, it will wait until the event is triggered only than it will look back through the 
+registry and check if the event matches and than will execute the listener function.
+
+--> NodeJs has events and all of the events executes its listeners when we trigger it through some code and that's 
+why NodeJs is Asynchronous and it does never get blocked in one operation which makes execution faster and better.
+
+-->
+ WE can write scripts in the scripts section in below. In this scripts, With Some reserved keywords like "start", you 
+ can run it with "npm start" while the scripts that are manual, for example, in the below case we have "start-server",
+ in that case we would need to use "npm run start-server" to run the script.
+ {
+  "name": "noderepo",
+  "version": "1.0.0",
+  "description": "NodeJs Complete Guide",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saggers94/NodeRepo.git"
+  },
+  "author": "Sagar Parmar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saggers94/NodeRepo/issues"
+  },
+  "homepage": "https://github.com/Saggers94/NodeRepo#readme"
+}
