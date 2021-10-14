@@ -1,6 +1,4 @@
 // NODEJS WITH EXPRESS FRAMEWORK CODE
-const http = require("http");
-
 const express = require("express");
 
 // Creating an express application and store it in a constant
@@ -10,21 +8,41 @@ const app = express();
 
 // here "next" is a function that will allow the middleware to run through the next
 // middleware function
-app.use((req, res, next) => {
-  console.log("In the Middleware!");
-  // next function will allow the request to travel through the next middleware
-  // if we don't call next the request dies, so we can't continue
-  // so, In the case of not using next we should give the response back
+// app.use((req, res, next) => {
+//   console.log("In the Middleware!");
+// next function will allow the request to travel through the next middleware
+// if we don't call next the request dies, so we can't continue
+// so, In the case of not using next we should give the response back
+//   next();
+// });
+
+app.use("/", (req, res, next) => {
+  console.log("This will always run!");
   next();
 });
 
-app.use((req, res, next) => {
-  console.log("In Another Middleware!");
+// "/add-product" path would need an identical match inorder to go into the middleware
+// and give the response
+app.use("/add-product", (req, res, next) => {
+  console.log("In the Add Product Middleware!");
+  res.send("<h1>Add Product!</h1>");
 });
 
-const server = http.createServer(app);
+// the "use" function has many overloaded functions
+// in the "use" function, we can pass path of the route which is optional
+app.use("/", (req, res, next) => {
+  console.log("In Another Middleware!");
+  // Send function from express allows us to send response of type any.
+  // Also, we can use any Vanilla NodejS functions like write() and end()
+  // Send function will also set a default (header) content type to "text/Html"
+  res.send("<h1>Hello From ExpressJs!</h1>");
+});
 
-server.listen(3000);
+// We can just relace the below code with app.listen(3000)
+// const server = http.createServer(app);
+// server.listen(3000);
+
+app.listen(3000);
 
 // ------NODEJS VANILLA CODE---------
 // const http = require('http');
