@@ -47,3 +47,14 @@ would refresh the server with the new code automatically.
 
 we can install Nodemon through "npm install nodemon --save-dev", where "--save-dev" is to let us know that this is 
 for only development purposes.
+
+
+---EXPRESS JS----
+
+--> We add express Js as it will provide us tools and functions through which we will have 
+a huge redunduncy in the vanilla Nodejs Code. For example, Routing, Extracting 
+
+--> Express Js is a framework for nodejs. It will provides tools and functions that will be helpful in writing 
+nodejs code and we won't have to write the detailed Vanilla NodeJS code
+
+--> Express JS is all about MiddleWare

@@ -1,3 +1,32 @@
+// NODEJS WITH EXPRESS FRAMEWORK CODE
+const http = require("http");
+
+const express = require("express");
+
+// Creating an express application and store it in a constant
+// the express module will give us the high level function that has huge logic already available in it
+// This "app" const is a valid function that can handle request and response which can be passed inside the createServer function
+const app = express();
+
+// here "next" is a function that will allow the middleware to run through the next
+// middleware function
+app.use((req, res, next) => {
+  console.log("In the Middleware!");
+  // next function will allow the request to travel through the next middleware
+  // if we don't call next the request dies, so we can't continue
+  // so, In the case of not using next we should give the response back
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log("In Another Middleware!");
+});
+
+const server = http.createServer(app);
+
+server.listen(3000);
+
+// ------NODEJS VANILLA CODE---------
 // const http = require('http');
 // const fs = require('fs');
 
@@ -48,16 +77,17 @@
 // server.listen(3000);
 
 // ------------------------------
-const http = require("http");
+// const http = require("http");
 
 // the below routes constant would have the exported function from the route file
-const routes = require("./routes");
-console.log(routes);
+// const routes = require("./routes");
+// console.log(routes);
+
 // create server takes request listener as an argument
 //the "Request Listener" is a function that executes with every incoming request
 // function rqListener(req, res) {}
 
 // This "CreateServer" does actually returns a server which we can store into the variable
-const server = http.createServer(routes.handler);
+// const server = http.createServer(routes.handler);
 
-server.listen(3000);
+// server.listen(3000);
