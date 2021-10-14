@@ -1,11 +1,26 @@
 // NODEJS WITH EXPRESS FRAMEWORK CODE
 const express = require("express");
+const bodyParser = require("body-parser");
 
 // Creating an express application and store it in a constant
 // the express module will give us the high level function that has huge logic already available in it
 // This "app" const is a valid function that can handle request and response which can be passed inside the createServer function
 const app = express();
 
+// this will gives us the middleware function that we can put in the app.use
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+
+// this bodyParser.urlencoded will give us the middleware function that would have next with
+// the parser to the request body
+// this urlencoded() function would parse only form requests
+// for the files and different types of inputs we can use different parsers from the
+// expressJS.
+// "{extended:false} would allow the default features to pass"
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(adminRoutes);
+app.use(shopRoutes);
 // here "next" is a function that will allow the middleware to run through the next
 // middleware function
 // app.use((req, res, next) => {
@@ -16,27 +31,10 @@ const app = express();
 //   next();
 // });
 
-app.use("/", (req, res, next) => {
-  console.log("This will always run!");
-  next();
-});
-
-// "/add-product" path would need an identical match inorder to go into the middleware
-// and give the response
-app.use("/add-product", (req, res, next) => {
-  console.log("In the Add Product Middleware!");
-  res.send("<h1>Add Product!</h1>");
-});
-
-// the "use" function has many overloaded functions
-// in the "use" function, we can pass path of the route which is optional
-app.use("/", (req, res, next) => {
-  console.log("In Another Middleware!");
-  // Send function from express allows us to send response of type any.
-  // Also, we can use any Vanilla NodejS functions like write() and end()
-  // Send function will also set a default (header) content type to "text/Html"
-  res.send("<h1>Hello From ExpressJs!</h1>");
-});
+// app.use("/", (req, res, next) => {
+//   //   console.log("This will always run!");
+//   next();
+// });
 
 // We can just relace the below code with app.listen(3000)
 // const server = http.createServer(app);
