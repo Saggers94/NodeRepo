@@ -1,4 +1,11 @@
+const path = require("path");
+
 const express = require("express");
+
+const rootDir = require("../util/path");
+
+// Getting the RootDirectory
+// console.log(rootDir);
 
 // Express Router
 const router = express.Router();
@@ -9,12 +16,17 @@ const router = express.Router();
 
 // "/add-product" path would need an identical match inorder to go into the middleware
 // and give the response
+
+// WE can use the same path if the methods we are using are different. Like in the below case we have
+// get and post methods with the same path
+
+// this route will be reached in the browser through "/admin/add-product" => GET
 router.get("/add-product", (req, res, next) => {
   //   console.log("In the Add Product Middleware!");
-  res.send(
-    "<form action='/product' method='POST'><input type='text' name='title'><button type='submit'>Add Product</button></input></form>"
-  );
+  res.sendFile(path.join(rootDir, "views", "add-product.html"));
 });
+
+// Get, post and other http methods will make sure that we have the exact match with the request5h
 
 // the "use" will work with all http requests
 // for the get request we can use "app.get" which is basically use but for the get request
@@ -22,7 +34,8 @@ router.get("/add-product", (req, res, next) => {
 
 // WE also have  "delete, patch and put"
 
-router.post("/product", (req, res, next) => {
+// This route will be reached with "/admin/add-product" => POST
+router.post("/add-product", (req, res, next) => {
   // Here we get the body but it is not parsed and that's why we need to
   // register a parser and we can do it in the beginning with the middleware
   console.log(req.body);

@@ -1,4 +1,6 @@
 // NODEJS WITH EXPRESS FRAMEWORK CODE
+const path = require("path");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -19,8 +21,14 @@ const shopRoutes = require("./routes/shop");
 // "{extended:false} would allow the default features to pass"
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(adminRoutes);
+// The first paramenter is the common segment available in the paths which is called as a filter
+app.use("/admin", adminRoutes);
 app.use(shopRoutes);
+
+app.use((req, res, next) => {
+  // You can chain many methods with res like "status", "setHeader"
+  res.status(404).sendFile(path.join(__dirname, "views", "not-found.html"));
+});
 // here "next" is a function that will allow the middleware to run through the next
 // middleware function
 // app.use((req, res, next) => {
