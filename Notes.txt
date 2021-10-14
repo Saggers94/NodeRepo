@@ -39,3 +39,11 @@ why NodeJs is Asynchronous and it does never get blocked in one operation which 
   },
   "homepage": "https://github.com/Saggers94/NodeRepo#readme"
 }
+
+
+--> NodeMon package from the npm cloud package storage is responsible to make development easier. For example,
+if we add a new code in the app.js file than we wouldn't have to go to the terminal and write "npm start" again, Nodemon
+would refresh the server with the new code automatically.
+
+we can install Nodemon through "npm install nodemon --save-dev", where "--save-dev" is to let us know that this is 
+for only development purposes.

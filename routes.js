@@ -65,11 +65,10 @@ const requestHandler = (req, res) => {
 // Multiple exports in a single file
 // ONe way
 // module.exports = { handler: requestHandler, sometext: "Hard Text" };
-
 // Second way
 module.exports.handler = requestHandler;
 module.exports.someText = "Hard Text";
 
-//third way : 'shortcuts available from the node js'
+//third way : 'shortcuts available from thnode js'
 // exports.handler = requestHandler;
 // exports.someText = "Hard Text";
