@@ -21,6 +21,11 @@ const shopRoutes = require("./routes/shop");
 // "{extended:false} would allow the default features to pass"
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// to serve file statically we have to give the access of read to the folder to which we want to grant the access
+// in our case it is "public"
+// this "express.static" would first look at the files that we have given a static path to and than try to search that file in the public folder as we have given it in the segment
+app.use(express.static(path.join(__dirname, "public")));
+
 // The first paramenter is the common segment available in the paths which is called as a filter
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
