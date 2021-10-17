@@ -58,3 +58,6 @@ a huge redunduncy in the vanilla Nodejs Code. For example, Routing, Extracting
 nodejs code and we won't have to write the detailed Vanilla NodeJS code
 
 --> Express JS is all about MiddleWare
+
+--> Template engine are not part of the server side code, so even though you change them, it won't trigger nodemon to refresh the server,
+and whatever values you will passed to the template will reflect without causing refresh in node server

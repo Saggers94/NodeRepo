@@ -10,6 +10,8 @@ const rootDir = require("../util/path");
 // Express Router
 const router = express.Router();
 
+const products = [];
+
 // Router function from express works in the same way as "app" works so
 // we can write "app.get" or "router.get" as in the below case.
 // both of them are same
@@ -39,8 +41,11 @@ router.post("/add-product", (req, res, next) => {
   // Here we get the body but it is not parsed and that's why we need to
   // register a parser and we can do it in the beginning with the middleware
   console.log(req.body);
+  products.push({ title: req.body.title });
   // "redirect" will redirect the request to the provided path
   res.redirect("/");
 });
 
-module.exports = router;
+exports.routes = router;
+exports.products = products;
+// module.exports = router;

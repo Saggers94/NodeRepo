@@ -9,8 +9,15 @@ const bodyParser = require("body-parser");
 // This "app" const is a valid function that can handle request and response which can be passed inside the createServer function
 const app = express();
 
+// with "app.set(name, value)" we can set global configuration, we can use our own keys or we can use the already defined configurations names from express
+// below we are setting up our templating engine "pug" in the express to tell express to use specific engine that we have added
+app.set("view engine", "pug");
+
+// with below configuration we are setting up the folder where our views are located
+app.set("views", "views");
+
 // this will gives us the middleware function that we can put in the app.use
-const adminRoutes = require("./routes/admin");
+const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
 // this bodyParser.urlencoded will give us the middleware function that would have next with
@@ -28,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // The first paramenter is the common segment available in the paths which is called as a filter
-app.use("/admin", adminRoutes);
+app.use("/admin", adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
