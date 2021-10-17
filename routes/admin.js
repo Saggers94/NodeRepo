@@ -25,7 +25,9 @@ const products = [];
 // this route will be reached in the browser through "/admin/add-product" => GET
 router.get("/add-product", (req, res, next) => {
   //   console.log("In the Add Product Middleware!");
-  res.sendFile(path.join(rootDir, "views", "add-product.html"));
+  // res.sendFile(path.join(rootDir, "views", "add-product.html"));
+
+  res.render("add-product", { docTitle: "Add Product" });
 });
 
 // Get, post and other http methods will make sure that we have the exact match with the request5h

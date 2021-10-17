@@ -40,7 +40,9 @@ app.use(shopRoutes);
 
 app.use((req, res, next) => {
   // You can chain many methods with res like "status", "setHeader"
-  res.status(404).sendFile(path.join(__dirname, "views", "not-found.html"));
+  // res.status(404).sendFile(path.join(__dirname, "views", "not-found.html"));
+
+  res.render("404", { docTitle: "Page Not Found" });
 });
 // here "next" is a function that will allow the middleware to run through the next
 // middleware function
