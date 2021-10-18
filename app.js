@@ -3,11 +3,19 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+// const expressHbs = require("express-handlebars");
 
 // Creating an express application and store it in a constant
 // the express module will give us the high level function that has huge logic already available in it
 // This "app" const is a valid function that can handle request and response which can be passed inside the createServer function
 const app = express();
+
+// here we define a new engine that is not a default one availble in express
+// "expressHbs()" would return initialized engine
+// app.engine("hbs", expressHbs());
+
+// setting up the engine
+// app.set("view engine", "hbs");
 
 // with "app.set(name, value)" we can set global configuration, we can use our own keys or we can use the already defined configurations names from express
 // below we are setting up our templating engine "pug" in the express to tell express to use specific engine that we have added

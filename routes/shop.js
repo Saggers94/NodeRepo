@@ -31,6 +31,15 @@ router.get("/", (req, res, next) => {
   // also, we have defined default templating engine "pug", so it will look for pug file in the views folder
   // render method allows us to pass the data that should be used in the view, in our case its a product
   res.render("shop", { prods: products, pageTitle: "Shop", path: "/" });
+
+  // in Handlebars we can't run any logic
+  // handlebars does not support the statement like "prods.length", it does only support boolean values
+  // res.render("shop", {
+  //   prods: products,
+  //   pageTitle: "Shop",
+  //   path: "/",
+  //   hadProducts: products.length > 0,
+  // });
 });
 
 module.exports = router;
