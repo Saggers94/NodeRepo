@@ -27,7 +27,10 @@ router.get("/add-product", (req, res, next) => {
   //   console.log("In the Add Product Middleware!");
   // res.sendFile(path.join(rootDir, "views", "add-product.html"));
 
-  res.render("add-product", { docTitle: "Add Product" });
+  res.render("add-product", {
+    pageTitle: "Add Product",
+    path: "/admin/add-product",
+  });
 });
 
 // Get, post and other http methods will make sure that we have the exact match with the request5h

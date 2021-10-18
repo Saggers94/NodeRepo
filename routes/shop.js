@@ -30,7 +30,7 @@ router.get("/", (req, res, next) => {
   // here we don't need to provide the path anymore as we have already defined that all views are in view folder
   // also, we have defined default templating engine "pug", so it will look for pug file in the views folder
   // render method allows us to pass the data that should be used in the view, in our case its a product
-  res.render("shop", { prods: products, docTitle: "Shop" });
+  res.render("shop", { prods: products, pageTitle: "Shop", path: "/" });
 });
 
 module.exports = router;
